@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Gorden Yulie Batu",
+  "description": "Website resmi Gorden Yulie Batu - penyedia gorden, vitrase, roller blind, dan aksesoris interior berkualitas dan berkualitas di Kota Batu, Malang, dan sekitarnya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
