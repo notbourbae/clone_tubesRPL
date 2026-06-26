@@ -9,6 +9,7 @@ import {
   deleteStoredProject 
 } from '../utils/storage';
 import { Product, Project } from '../types';
+import { getApiUrl } from '../utils/api';
 import { 
   LayoutDashboard, 
   ShoppingBag, 
@@ -96,7 +97,7 @@ export default function AdminDashboard() {
   const [notification, setNotification] = useState<string | null>(null);
 
   const fetchAllData = () => {
-    fetch('/api/products', {
+    fetch(getApiUrl('/api/products'), {
       headers: {
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
@@ -111,7 +112,7 @@ export default function AdminDashboard() {
       })
       .catch(err => console.error('Gagal mengambil data produk SQL:', err));
 
-    fetch('/api/projects', {
+    fetch(getApiUrl('/api/projects'), {
       headers: {
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
@@ -126,7 +127,7 @@ export default function AdminDashboard() {
       })
       .catch(err => console.error('Gagal mengambil data portofolio SQL:', err));
 
-    fetch('/api/testimonials', {
+    fetch(getApiUrl('/api/testimonials'), {
       headers: {
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
@@ -167,7 +168,7 @@ export default function AdminDashboard() {
     e.preventDefault();
     setLoginError('');
 
-    fetch('/api/login', {
+    fetch(getApiUrl('/api/login'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

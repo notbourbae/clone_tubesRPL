@@ -3,6 +3,7 @@ import { Project } from '../types';
 import { MapPin, Calendar, Compass, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getStoredProjects } from '../utils/storage';
+import { getApiUrl } from '../utils/api';
 
 interface PortofolioProps {
   setActiveTab?: (tab: string) => void;
@@ -14,7 +15,7 @@ export default function Portofolio({ setActiveTab }: PortofolioProps) {
   const [projects, setProjects] = useState<Project[]>(() => getStoredProjects());
 
   useEffect(() => {
-    fetch('/api/projects')
+    fetch(getApiUrl('/api/projects'))
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

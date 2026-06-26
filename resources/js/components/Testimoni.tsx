@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Review } from '../types';
 import { Star, Quote, PenTool, CheckCircle, User, Sparkles, Camera, Upload, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { getApiUrl } from '../utils/api';
 
 const INITIAL_REVIEWS: Review[] = [
   {
@@ -111,7 +112,7 @@ export default function Testimoni({ setActiveTab }: TestimoniProps) {
 
   // Load reviews from localStorage on creation
   useEffect(() => {
-    fetch('/api/testimonials')
+    fetch(getApiUrl('/api/testimonials'))
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -154,7 +155,7 @@ export default function Testimoni({ setActiveTab }: TestimoniProps) {
       image: image || undefined
     };
 
-    fetch('/api/testimonials', {
+    fetch(getApiUrl('/api/testimonials'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

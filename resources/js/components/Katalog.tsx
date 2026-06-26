@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, Eye, X } from 'lucide-react';
 import { Product } from '../types';
 import { getStoredProducts } from '../utils/storage';
+import { getApiUrl } from '../utils/api';
 
 const CATEGORY_ITEMS = [
   { id: 'semua', label: 'Semua' },
@@ -19,7 +20,7 @@ export default function Katalog() {
   const [products, setProducts] = useState<Product[]>(() => getStoredProducts());
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch(getApiUrl('/api/products'))
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
